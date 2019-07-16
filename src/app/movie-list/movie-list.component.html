@@ -1,0 +1,22 @@
+<div class="">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="h2">Movies</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <!-- Button trigger modal -->
+      <table>
+        <tr>
+          <td *ngFor="let movie of rows;">
+            <img src="{{movie.url}}" style="width: 200px;height: 300px;" title="{{movie.name}}">
+          </td>
+        </tr>
+      </table>
+      <hr>
+      <app-movie-create></app-movie-create>
+    </div>
+  </div>
+</div>
+
