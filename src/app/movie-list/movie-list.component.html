@@ -1,21 +1,42 @@
-<div class="">
+<app-reservation></app-reservation>
+<div class="p-5">
   <div class="row">
-    <div class="col-md-12">
-      <h1 class="h2">Movies</h1>
+    <div class="col-md-10">
+      <h1 class="h2">Películas</h1>
+    </div>
+    <div class="col-md-2">
+      <app-movie-create></app-movie-create>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-12">
+  <div class="row py-5">
+    <div class="col-md-12" align="center">
       <!-- Button trigger modal -->
-      <table>
-        <tr>
-          <td *ngFor="let movie of rows;">
-            <img src="{{movie.url}}" style="width: 200px;height: 300px;" title="{{movie.name}}">
-          </td>
-        </tr>
-      </table>
+
+      <app-datepicker-range [labelText]="'Seleccionar Fecha'" (callbackMethod)="updateMoviesWithFilter($event)"></app-datepicker-range>
       <hr>
-      <app-movie-create></app-movie-create>
+      <div class="row py-2">
+        <div class="col-md-12" *ngIf="apiService.getCountMovies() == 0">
+          No se han registrado películas
+        </div>
+        <div class="col-auto content-movie card" *ngFor="let movie of apiService.getMovies()  | async;">
+          <img src="{{movie.url}}" class="card-img" style="width: 200px;height: 300px;" title="{{movie.name}}">
+          <div class="card-img-overlay">
+            <div class="row" style="height: 85%;">
+            </div>
+            <div class="row" style="height: 15%;">
+              <div class="col-md-12">
+                <button *ngIf="movie.show_to_reserve" type="button" class="btn btn-primary btn-reservation" data-toggle="modal" data-target="#modal_reservation" (click)="openModalReservation(movie.id)">
+                  Reservar
+                </button>
+                <button *ngIf="!movie.show_to_reserve" type="button" class="btn btn-warning btn-reservation">
+                  Sin cupos
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
     </div>
   </div>
 </div>

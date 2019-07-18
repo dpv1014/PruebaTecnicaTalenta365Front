@@ -1,38 +1,74 @@
-<div class="container">
-  <div class="logo">Crear nueva pelicula!</div>
-  <div class="register-item">
-    <form #myform="ngForm" [formGroup]="myForm" ngNativeValidate (ngSubmit)="register(myform)" class="form form-register">
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" (click)="openModal()">
+  Crear Película
+</button>
 
-      <div class="form-field">
-        <label for="movie-name">Nombre: </label>
-        <input type="text" required id="movie-name" name="movie[name]" [formControl]="myForm.get('name')">
+<div class="modal modal_movie" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Crear película</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
+      <form #myform="ngForm" [formGroup]="myForm" ngNativeValidate (ngSubmit)="createMovie(myform)" class="form form-register">
+        <div class="modal-body">
+          <div class="container">
+            <div class="register-item">
 
-      <div class="form-field">
-       <label for="movie-description">Sinopsis: </label>
-        <textarea id="movie-description" name="movie[description]" [formControl]="myForm.get('description')"></textarea>
-      </div>
+              <div class="form-field">
+                <div class="row">
+                  <div class="col-md-3">
+                    <label for="movie-name">Título </label>
+                  </div>
+                  <div class="col-md-8">
+                    <input type="text" required id="movie-name" name="movie[name]" [formControl]="myForm.get('name')">
+                  </div>
+                </div>
+              </div>
 
-      <div class="form-field">
-        <label for="movie-url">Url: </label>
-        <input type="text" required id="movie-url" name="movie[url]" [formControl]="myForm.get('url')">
-      </div>
+              <div class="form-field">
+                <div class="row">
+                  <div class="col-md-3">
+                    <label for="movie-description">Sinópsis </label>
+                  </div>
+                  <div class="col-md-8">
+                    <textarea id="movie-description" name="movie[description]" [formControl]="myForm.get('description')"></textarea>
+                  </div>
+                </div>
+              </div>
 
-      <div class="form-field">
-        <label for="movie-url">Days: </label>
+              <div class="form-field">
+                <div class="row">
+                  <div class="col-md-3">
+                    <label for="movie-url">Poster Url </label>
+                  </div>
+                  <div class="col-md-8">
+                    <input type="text" required id="movie-url" name="movie[url]" [formControl]="myForm.get('url')">
+                  </div>
+                </div>
+              </div>
 
-        <input type="checkbox" id="day-1" name="days[]" value="1" > <label for="day-1">Monday</label>
-        <input type="checkbox" id="day-2" name="days[]" value="2"><label for="day-2"> Tuesday </label>
-        <input type="checkbox" id="day-3" name="days[]" value="3"><label for="day-3"> Wednesday </label>
-        <input type="checkbox" id="day-4" name="days[]" value="4"><label for="day-4"> Thursday </label>
-        <input type="checkbox" id="day-5" name="days[]" value="5"><label for="day-5"> Friday </label>
-        <input type="checkbox" id="day-6" name="days[]" value="6"><label for="day-6"> Saturday </label>
-        <input type="checkbox" id="day-7" name="days[]" value="7"><label for="day-7"> Sunday </label>
-      </div>
-
-      <div class="form-field">
-        <input type="submit" value="Create">
-      </div>
-    </form>
+              <div class="form-field">
+                <div class="row">
+                  <div class="col-md-3">
+                    <label for="movie-url">Fechas </label>
+                  </div>
+                  <div class="col-md-8">
+                    <app-datepicker-range #datePicker [labelText]="'only_input'" (callbackMethod)="updateValueInputsDate($event)"></app-datepicker-range>
+                    <input type="hidden" required id="movie-day-start" name="movie[day_start]" [formControl]="myForm.get('day_start')">
+                    <input type="hidden" required id="movie-day-end" name="movie[day_end]" [formControl]="myForm.get('day_end')">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Crear</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+      </form>
+    </div>
   </div>
 </div>

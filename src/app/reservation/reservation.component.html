@@ -1,0 +1,57 @@
+<div class="modal modal_reservation" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Reservar</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form #myform="ngForm" [formGroup]="myForm" ngNativeValidate (ngSubmit)="createReservation(myform)" class="form form-register">
+        <div class="modal-body">
+          <div class="container">
+            <div class="register-item">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-field">
+                    <label for="user-name">Nombre completo </label>
+                    <br>
+                    <input type="text" required id="user-name" name="user[name]" [formControl]="myForm.get('name')">
+                    <input type="hidden" required id="movie-id" name="user[movie_id]" [formControl]="myForm.get('movie_id')">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-field">
+                    <label for="user-celular">Celular </label>
+                    <br>
+                    <input type="number" required id="user-celular" name="user[celular]" [formControl]="myForm.get('cellphone')">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-field">
+                    <label for="user-id_number">Cédula </label>
+                    <br>
+                    <input type="number" required id="user-id_number" name="user[id_number]" [formControl]="myForm.get('id_number')">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-field">
+                    <label for="user-email">Correo electrónico </label>
+                    <br>
+                    <input type="email" required id="user-email" name="user[email]" [formControl]="myForm.get('email')">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Reservar</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

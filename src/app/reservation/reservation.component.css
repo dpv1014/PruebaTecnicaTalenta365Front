@@ -1,8 +1,6 @@
-input,
-textarea{
+input{
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
   border: 1px solid #dedcdc;
-  width: 100%;
 }

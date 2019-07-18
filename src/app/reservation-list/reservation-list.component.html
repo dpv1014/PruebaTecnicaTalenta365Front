@@ -1,0 +1,43 @@
+<app-reservation></app-reservation>
+<div class="p-5">
+  <div class="row">
+    <div class="col-md-10">
+      <h1 class="h2">Reservas Realizadas</h1>
+    </div>
+  </div>
+  <div class="row py-5">
+    <div class="col-md-12" align="center">
+
+      <app-datepicker-range [labelText]="'Seleccionar Fecha'" (callbackMethod)="updateReservationsWithFilter($event)"></app-datepicker-range>
+
+      <div class="row" style="margin-top: 20px;">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Pelicula</th>
+                    <th scope="col">Nombre responsable</th>
+                    <th scope="col">Correo electrónico</th>
+                    <th scope="col">Cédula</th>
+                    <th scope="col">Celular</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let reservation of apiService.getReservations()  | async;">
+                    <th scope="row">{{reservation.movie_name}}</th>
+                    <td>{{reservation.name}}</td>
+                    <td>{{reservation.email}}</td>
+                    <td>{{reservation.id_number}}</td>
+                    <td>{{reservation.cellphone}}</td>
+                  </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+    </div>
+  </div>
+</div>

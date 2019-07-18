@@ -1,0 +1,39 @@
+.content-filter > div > div{
+  padding-left: 15px;
+}
+
+#filter_date,
+.input-group-prepend{
+  height: 30px;
+  margin-top: -3px;
+}
+
+.input-group-prepend,
+.input-group-prepend .input-group-text{
+  -webkit-border-top-left-radius: 20px;
+  -webkit-border-bottom-left-radius: 20px;
+  -moz-border-radius-topleft: 20px;
+  -moz-border-radius-bottomleft: 20px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-right: 0px;
+}
+
+.input-group-prepend .input-group-text{
+  background-color: transparent;
+
+}
+
+#filter_date{
+  -webkit-border-top-right-radius: 20px;
+  -webkit-border-bottom-right-radius: 20px;
+  -moz-border-radius-topright: 20px;
+  -moz-border-radius-bottomright: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-left: 0px;
+}
+
+.card{
+  backgorund-color: white;
+}
